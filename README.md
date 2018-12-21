@@ -2,13 +2,13 @@
 description: A distributed request tracking system for reactive HTTP-based micro-services.
 ---
 
-# Introdution
-
-## Overview
+# The big picture
 
 DeepTrace is a distributed request tracking system for reactive HTTP-based micro-services. As such, it aims to share the responsibility of logging requests/responses with each application in a system.
 
 That sounds great, right? But as always it's easier said than done.
+
+## The problem
 
 Imagine you have the following chain of requests: a frontend SPA is making HTTP requests against your API which needs to request information from micro-service 1 which needs to collect information from micro-service 2.
 
@@ -34,7 +34,7 @@ API ⇄ MS1 ⇄ MS2
 
 Note that in this example MS2 will be requested twice within the same chain of requests what makes it even harder to debug.
 
-## So, how can DeepTrace help me?
+## The solution
 
 To be honest, DeepTrace isn't the perfect out-of-box plug-n-play solution you are looking for and it will probably requires changes to your existent code.
 
@@ -48,9 +48,15 @@ Each HTTP request triggered by your application should propagate the **Parent id
 
 With traces indexed by these three keys, DeepTrace is able to follow relations and respond most concerning questions when debugging microservices.
 
-## Challenges
+## The challenges
 
-The first biggest challenge faced by DeepTrace lays with DeepTrace's Agents - which are responsible for collecting request/response information along with those three index keys - because each programming language and each framework might introduce difficulties on how to extract and how to propagate the **context keys**. We do not have enough manpower to cover every possible language/framework combination but we believe that by keeping the DeepTrace Tracing API simple it should be easy for anyone to contribute to this project by creating their own DeepTrace Agents.
+The first biggest challenge faced by DeepTrace lays with **DeepTrace's Agents** - which are responsible for collecting request/response information along with those three index keys - because each programming language and each framework might introduce difficulties on how to extract and how to propagate the **context keys**. We do not have enough manpower to cover every possible language/framework combination but we believe that by keeping the DeepTrace Tracing API simple it should be easy for anyone to contribute to this project by creating their own DeepTrace Agents.
 
-The second - but not less important - biggest challenge is security. We opted to not include security layers within DeepTrace at all. I known this sounds harsh but I think we should solve one problem at a time. For now, **we recommend you to deploy DeepTrace on an isolated network or on a network protected by IP whitelisting**.
+The second - but not less important - biggest challenge is security. We opted to not include security layers within DeepTrace at all. I known this sounds harsh but I think we should solve one problem at a time. 
+
+{% hint style="info" %}
+For now, we recommend you to deploy DeepTrace on an isolated network or -at least - on a network protected by IP whitelisting.
+{% endhint %}
+
+
 
