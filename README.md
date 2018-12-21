@@ -1,8 +1,10 @@
 ---
-description: Distributed request tracking system for reactive HTTP-based micro-services.
+description: A distributed request tracking system for reactive HTTP-based micro-services.
 ---
 
 # Introdution
+
+## Overview
 
 DeepTrace is a distributed request tracking system for reactive HTTP-based micro-services. As such, it aims to share the responsibility of logging requests/responses with each application in a system.
 
@@ -32,7 +34,7 @@ API ⇄ MS1 ⇄ MS2
 
 Note that in this example MS2 will be requested twice within the same chain of requests what makes it even harder to debug.
 
-### So, how can DeepTrace help me?
+## So, how can DeepTrace help me?
 
 To be honest, DeepTrace isn't the perfect out-of-box plug-n-play solution you are looking for and it will probably requires changes to your existent code.
 
@@ -46,7 +48,7 @@ Each HTTP request triggered by your application should propagate the **Parent id
 
 With traces indexed by these three keys, DeepTrace is able to follow relations and respond most concerning questions when debugging microservices.
 
-### Challenges
+## Challenges
 
 The first biggest challenge faced by DeepTrace lays with DeepTrace's Agents - which are responsible for collecting request/response information along with those three index keys - because each programming language and each framework might introduce difficulties on how to extract and how to propagate the **context keys**. We do not have enough manpower to cover every possible language/framework combination but we believe that by keeping the DeepTrace Tracing API simple it should be easy for anyone to contribute to this project by creating their own DeepTrace Agents.
 
