@@ -5,6 +5,7 @@
 ## Tracing API
 
 * [Getting started](tracing-api/getting-started.md)
+* [Endpoints](tracing-api/endpoints.md)
 
 ## Web client
 
