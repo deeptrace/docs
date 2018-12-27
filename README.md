@@ -1,5 +1,7 @@
 ---
-description: A distributed request tracking system for reactive HTTP-based micro-services.
+description: >-
+  An overview to which problem DeepTrace aims to solve and the main challenges
+  it faces.
 ---
 
 # The big picture
@@ -55,7 +57,7 @@ The first biggest challenge faced by DeepTrace lays with **DeepTrace's Agents** 
 The second - but not less important - biggest challenge is security. We opted to not include security layers within DeepTrace at all. I known this sounds harsh but I think we should solve one problem at a time. 
 
 {% hint style="info" %}
-For now, we recommend you to deploy DeepTrace on an isolated network or -at least - on a network protected by IP whitelisting.
+For now, we recommend you to deploy DeepTrace on an isolated network or at least on a network protected by IP whitelisting.
 {% endhint %}
 
 
