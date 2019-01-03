@@ -44,9 +44,9 @@ DeepTrace approaches this problem in a way that the responsibility for collectin
 
 * **Request id**: An unique id that should be assigned to each request handled by your application.
 * **Parent id**: Whenever an application received a HTTP request within a chain of requests, the **Parent id** key holds the **Request id** of the request which originated it. This enables DeepTrace to establish relationship between requests and follow them while debugging. Naturally the application's request which started a chain of requests won't have a **Parent id**. That's ok. In fact, this is what allows us to identify this request as our **Root request**.
-* **Chain id**: All traces within a chain of requests are indexed with the same **Chain id** in order to facilitate their identification. This **Chain id** is always the **Request id** of the **Root request** - the one which originated the chain of requests.
+* **Root id**: All traces within a chain of requests are indexed with the same **Root id**, which is the same as the **Root request** id.
 
-Each HTTP request triggered by your application should propagate the **Parent id** and the **Chain id** key to the next application. That's how all DeepTrace Agents knows when the current request is part of a chain of request or is a **Root request**.
+Each HTTP request triggered by your application should propagate the **Parent id** and the **Root id** key to the next application. That's how all DeepTrace Agents knows when the current request is part of a chain of request or is a **Root request**.
 
 With traces indexed by these three keys, DeepTrace is able to follow relations and respond most concerning questions when debugging microservices.
 
