@@ -12,12 +12,12 @@
 
 * [Getting started](web-client/getting-started.md)
 
-## Node packages
+## JavaScript Packages
 
-* [@deeptrace/appify](node-packages/deeptrace-appify.md)
-* [@deeptrace/commons](node-packages/deeptrace-commons.md)
-* [@deeptrace/config](node-packages/deeptrace-config.md)
-* [@deeptrace/core](node-packages/deeptrace-core.md)
-* [@deeptrace/express](node-packages/deeptrace-express.md)
-* [@deeptrace/koa](node-packages/deeptrace-koa.md)
+* [@deeptrace/appify](js-packages/deeptrace-appify.md)
+* [@deeptrace/commons](js-packages/deeptrace-commons.md)
+* [@deeptrace/config](js-packages/deeptrace-config.md)
+* [@deeptrace/core](js-packages/deeptrace-core.md)
+* [@deeptrace/express](js-packages/deeptrace-express.md)
+* [@deeptrace/koa](js-packages/deeptrace-koa.md)
 
