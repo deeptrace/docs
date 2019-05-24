@@ -1,12 +1,12 @@
 # Endpoints
 
-{% api-method method="post" host="https://api.deep-trace.io" path="/v1/traces" %}
+{% api-method method="post" host="https://api.deep-trace.io" path="/traces" %}
 {% api-method-summary %}
-Create a trace
+Ingest a trace
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Creates a trace document.
+Ingests a trace.
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -19,18 +19,18 @@ Allowed values: `application/json` or `application/x-www-form-urlencoded`.
 
 {% api-method-form-data-parameters %}
 {% api-method-parameter name="id" type="string" required=true %}
-Trace id.  
-UUID v4, e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
+Trace id \(a.k.a request id\) which is an `UUID/v4`.  
+e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="parentid" type="string" required=true %}
-Parent trace id.  
-UUID v4, e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
+Parent trace id which is an `UUID/v4`.  
+e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="rootid" type="string" required=true %}
-Root trace id.  
-UUID v4, e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
+Root trace id, which is an `UUID/v4`.  
+e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="tags" type="object" required=true %}
@@ -44,7 +44,8 @@ Supports custom methods.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="request\[uri\]" type="string" required=true %}
-
+The request URI.  
+e.g.: `http://api.foo.bar/baz`
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="request\[ip\]" type="string" required=true %}
@@ -54,11 +55,11 @@ Supports `IPv4` and `IPv6`.
 
 {% api-method-parameter name="request\[headers\]" type="object" required=true %}
 HTTP request headers.  
-Expects `string` keys and `string` values.
+Expects `string` keys and `string` or `null` values.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="request\[body\]" type="string" required=true %}
-
+The request body `string`. Allows `null`.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="request\[timestamp\]" type="string" required=true %}
@@ -77,7 +78,7 @@ Expects `string` keys and `string` values.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="response\[body\]" type="string" required=true %}
-
+HTTP response body `string`. Allows `null`.
 {% endapi-method-parameter %}
 
 {% api-method-parameter name="response\[timestamp\]" type="string" required=true %}
@@ -139,20 +140,21 @@ Content-Type: application/json
 {% endapi-method-spec %}
 {% endapi-method %}
 
-{% api-method method="get" host="https://api.deep-trace.io" path="/v1/traces/:id" %}
+{% api-method method="get" host="https://api.deep-trace.io" path="/traces/:id" %}
 {% api-method-summary %}
 Get a trace
 {% endapi-method-summary %}
 
 {% api-method-description %}
-Gets a trace document.
+Gets a trace and its nested children traces.
 {% endapi-method-description %}
 
 {% api-method-spec %}
 {% api-method-request %}
 {% api-method-path-parameters %}
 {% api-method-parameter name="id" type="string" required=true %}
-Unique trace id.
+Trace id \(a.k.a request id\) which is an `UUID/v4`.  
+e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
 {% endapi-method-parameter %}
 {% endapi-method-path-parameters %}
 {% endapi-method-request %}
@@ -210,7 +212,10 @@ Content-Type: application/json; charset=utf-8
     "service": "sample-app-1",
     "release": "v1.3.0",
     "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-    "foo": "bar"
+    "platform": "linux",
+    "arch": "x64",
+    "agent": "@deeptrace/agent@v2.0.0",
+    "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
   },
   "children": [
     {
@@ -253,7 +258,10 @@ Content-Type: application/json; charset=utf-8
         "service": "sample-app-6",
         "release": "v1.3.0",
         "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-        "foo": "bar"
+        "platform": "linux",
+        "arch": "x64",
+        "agent": "@deeptrace/agent@v2.0.0",
+        "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
       },
       "children": [],
       "took": 0,
@@ -299,7 +307,10 @@ Content-Type: application/json; charset=utf-8
         "service": null,
         "release": "v1.3.0",
         "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-        "foo": "bar"
+        "platform": "linux",
+        "arch": "x64",
+        "agent": "@deeptrace/agent@v2.0.0",
+        "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
       },
       "children": [
         {
@@ -342,7 +353,10 @@ Content-Type: application/json; charset=utf-8
             "service": "sample-app-6",
             "release": "v1.3.0",
             "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-            "foo": "bar"
+            "platform": "linux",
+            "arch": "x64",
+            "agent": "@deeptrace/agent@v2.0.0",
+            "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
           },
           "children": [],
           "took": 1,
@@ -392,7 +406,10 @@ Content-Type: application/json; charset=utf-8
         "service": "sample-app-3",
         "release": "v1.3.0",
         "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-        "foo": "bar"
+        "platform": "linux",
+        "arch": "x64",
+        "agent": "@deeptrace/agent@v2.0.0",
+        "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
       },
       "children": [
         {
@@ -435,7 +452,10 @@ Content-Type: application/json; charset=utf-8
             "service": null,
             "release": "v1.3.0",
             "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-            "foo": "bar"
+            "platform": "linux",
+            "arch": "x64",
+            "agent": "@deeptrace/agent@v2.0.0",
+            "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
           },
           "children": [
             {
@@ -478,7 +498,10 @@ Content-Type: application/json; charset=utf-8
                 "service": "sample-app-6",
                 "release": "v1.3.0",
                 "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-                "foo": "bar"
+                "platform": "linux",
+                "arch": "x64",
+                "agent": "@deeptrace/agent@v2.0.0",
+                "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
               },
               "children": [],
               "took": 0,
@@ -532,7 +555,10 @@ Content-Type: application/json; charset=utf-8
         "service": "sample-app-3",
         "release": "v1.3.0",
         "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-        "foo": "bar"
+        "platform": "linux",
+        "arch": "x64",
+        "agent": "@deeptrace/agent@v2.0.0",
+        "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
       },
       "children": [
         {
@@ -575,7 +601,10 @@ Content-Type: application/json; charset=utf-8
             "service": null,
             "release": "v1.3.0",
             "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-            "foo": "bar"
+            "platform": "linux",
+            "arch": "x64",
+            "agent": "@deeptrace/agent@v2.0.0",
+            "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
           },
           "children": [
             {
@@ -618,7 +647,10 @@ Content-Type: application/json; charset=utf-8
                 "service": "sample-app-6",
                 "release": "v1.3.0",
                 "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-                "foo": "bar"
+                "platform": "linux",
+                "arch": "x64",
+                "agent": "@deeptrace/agent@v2.0.0",
+                "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
               },
               "children": [],
               "took": 0,
@@ -672,7 +704,10 @@ Content-Type: application/json; charset=utf-8
         "service": "sample-app-2",
         "release": "v1.3.0",
         "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-        "foo": "bar"
+        "platform": "linux",
+        "arch": "x64",
+        "agent": "@deeptrace/agent@v2.0.0",
+        "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
       },
       "children": [
         {
@@ -715,7 +750,10 @@ Content-Type: application/json; charset=utf-8
             "service": "sample-app-5",
             "release": "v1.3.0",
             "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-            "foo": "bar"
+            "platform": "linux",
+            "arch": "x64",
+            "agent": "@deeptrace/agent@v2.0.0",
+            "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
           },
           "children": [],
           "took": 2,
@@ -761,7 +799,10 @@ Content-Type: application/json; charset=utf-8
             "service": "sample-app-3",
             "release": "v1.3.0",
             "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-            "foo": "bar"
+            "platform": "linux",
+            "arch": "x64",
+            "agent": "@deeptrace/agent@v2.0.0",
+            "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
           },
           "children": [
             {
@@ -804,7 +845,10 @@ Content-Type: application/json; charset=utf-8
                 "service": null,
                 "release": "v1.3.0",
                 "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-                "foo": "bar"
+                "platform": "linux",
+                "arch": "x64",
+                "agent": "@deeptrace/agent@v2.0.0",
+                "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
               },
               "children": [
                 {
@@ -847,7 +891,10 @@ Content-Type: application/json; charset=utf-8
                     "service": "sample-app-6",
                     "release": "v1.3.0",
                     "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-                    "foo": "bar"
+                    "platform": "linux",
+                    "arch": "x64",
+                    "agent": "@deeptrace/agent@v2.0.0",
+                    "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
                   },
                   "children": [],
                   "took": 0,
@@ -901,7 +948,10 @@ Content-Type: application/json; charset=utf-8
             "service": null,
             "release": "v1.3.0",
             "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-            "foo": "bar"
+            "platform": "linux",
+            "arch": "x64",
+            "agent": "@deeptrace/agent@v2.0.0",
+            "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
           },
           "children": [
             {
@@ -944,7 +994,10 @@ Content-Type: application/json; charset=utf-8
                 "service": "sample-app-6",
                 "release": "v1.3.0",
                 "commit": "f3c835b06bc8fc58e414a3ac5730df05448bdf81",
-                "foo": "bar"
+                "platform": "linux",
+                "arch": "x64",
+                "agent": "@deeptrace/agent@v2.0.0",
+                "engine": "node/v10.15.3; v8/v7.0.276.38-node.18"
               },
               "children": [],
               "took": 1,
