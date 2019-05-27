@@ -1,8 +1,8 @@
 ---
-description: Effortless opinionated API bootstrap as module.
+description: Effortless opinionated API bootstrap as module
 ---
 
 # @deeptrace/appify
 
-Comming soon...
+Coming soon...
 

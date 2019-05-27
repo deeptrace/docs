@@ -1,8 +1,8 @@
 ---
-description: A plug-in-play DeepTrace agent as middleware for express applications.
+description: A plug-n-play DeepTrace agent as middleware for express applications
 ---
 
 # @deeptrace/express
 
-Comming soon...
+Coming soon...
 

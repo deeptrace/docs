@@ -14,10 +14,10 @@
 
 ## JavaScript Packages
 
+* [@deeptrace/agent](js-packages/deeptrace-agent.md)
 * [@deeptrace/appify](js-packages/deeptrace-appify.md)
 * [@deeptrace/commons](js-packages/deeptrace-commons.md)
 * [@deeptrace/config](js-packages/deeptrace-config.md)
-* [@deeptrace/core](js-packages/deeptrace-core.md)
 * [@deeptrace/express](js-packages/deeptrace-express.md)
 * [@deeptrace/koa](js-packages/deeptrace-koa.md)
 

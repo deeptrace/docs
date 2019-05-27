@@ -1,8 +1,8 @@
 ---
-description: A plug-in-play DeepTrace agent as middleware for koa applications.
+description: A plug-n-play DeepTrace agent as middleware for koa applications
 ---
 
 # @deeptrace/koa
 
-Comming soon...
+Coming soon...
 
