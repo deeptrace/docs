@@ -169,26 +169,6 @@ e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
 {% endapi-method-path-parameters %}
 {% endapi-method-request %}
 
-{% api-method-response %}
-{% api-method-response-example httpCode=404 %}
-{% api-method-response-example-description %}
-
-{% endapi-method-response-example-description %}
-
-```http
-HTTP/1.1 404 Not Found
-Content-Type: application/json; charset=utf-8
-
-{
-  "status": 404,
-  "error": {
-    "code": "TRACE_NOT_FOUND",
-    "message": "There seems to be not trace with given id \"b1ef74d5-959b-46b5-b361-dcece28cf9be\". Are you sure that's the right id?"
-  }
-}
-```
-{% endapi-method-response-example %}
-
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
 This is a chain of requests captured using [@deeptrace/agent](https://deeptrace.gitbook.io/docs/js-packages/deeptrace-agent).
@@ -876,6 +856,26 @@ Content-Length: 16222
     }
   ],
   "took": 55
+}
+```
+{% endapi-method-response-example %}
+
+{% api-method-response %}
+{% api-method-response-example httpCode=404 %}
+{% api-method-response-example-description %}
+
+{% endapi-method-response-example-description %}
+
+```http
+HTTP/1.1 404 Not Found
+Content-Type: application/json; charset=utf-8
+
+{
+  "status": 404,
+  "error": {
+    "code": "TRACE_NOT_FOUND",
+    "message": "There seems to be not trace with given id \"b1ef74d5-959b-46b5-b361-dcece28cf9be\". Are you sure that's the right id?"
+  }
 }
 ```
 {% endapi-method-response-example %}
