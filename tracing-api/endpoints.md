@@ -43,12 +43,12 @@ HTTP method.
 Supports custom methods.
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="request\[uri\]" type="string" required=true %}
+{% api-method-parameter name="request\[url\]" type="string" required=true %}
 The request URI.  
 e.g.: `http://api.foo.bar/baz`
 {% endapi-method-parameter %}
 
-{% api-method-parameter name="request\[ip\]" type="string" required=true %}
+{% api-method-parameter name="caller\[ip\]" type="string" required=true %}
 Requester's IP address.  
 Supports `IPv4` and `IPv6`.
 {% endapi-method-parameter %}
