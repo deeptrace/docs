@@ -169,6 +169,7 @@ e.g.: `5500077a-1da3-4f73-9561-d5cbdf127728`
 {% endapi-method-path-parameters %}
 {% endapi-method-request %}
 
+{% api-method-response %}
 {% api-method-response-example httpCode=200 %}
 {% api-method-response-example-description %}
 This is a chain of requests captured using [@deeptrace/agent](https://deeptrace.gitbook.io/docs/js-packages/deeptrace-agent).
@@ -860,7 +861,6 @@ Content-Length: 16222
 ```
 {% endapi-method-response-example %}
 
-{% api-method-response %}
 {% api-method-response-example httpCode=404 %}
 {% api-method-response-example-description %}
 
