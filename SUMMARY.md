@@ -14,7 +14,7 @@
 
 ## JavaScript Packages
 
-* [@deeptrace/agent](js-packages/deeptrace-agent.md)
+* ⭐️ [@deeptrace/agent](js-packages/deeptrace-agent.md)
 * [@deeptrace/appify](js-packages/deeptrace-appify.md)
 * [@deeptrace/appify-http](js-packages/deeptrace-appify-http.md)
 * [@deeptrace/appify-server-builder](js-packages/deeptrace-appify-server-builder.md)
